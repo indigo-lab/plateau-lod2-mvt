@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>MVT preview</title>
+  <title>plateau-lod2-mvt</title>
   <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0" />
   <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@1.15.2/dist/maplibre-gl.css" />
   <script src="https://unpkg.com/maplibre-gl@1.15.2/dist/maplibre-gl.js"></script>
@@ -50,7 +50,21 @@
         "maxzoom": 20,
         "filter": ["has", "z"],
         "paint": {
-          "fill-extrusion-color": "#808080",
+          "fill-extrusion-color": [
+            "interpolate-lab",
+            ["linear"],
+            ["%", ["round", ["*", 10, ["get", "z"]]], 10],
+            0, "#d95d2a",
+            1, "#d95d2a",
+            2, "#f8df4a",
+            3, "#f8df4a",
+            4, "#1d508e",
+            5, "#1d508e",
+            6, "#3c782e",
+            7, "#3c782e",
+            8, "#845c40",
+            9, "#726f62"
+          ],
           "fill-extrusion-height": ["*", ["get", "z"], 1]
         }
       }]
