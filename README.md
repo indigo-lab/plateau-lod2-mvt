@@ -11,11 +11,9 @@
 
 # デモ
 
-## index.html
-
 <https://indigo-lab.github.io/plateau-lod2-mvt/>
 
-[![plateau-tokyo23ku-building-mvt-2020](https://repository-images.githubusercontent.com/357730702/111d3b00-c2f0-11eb-9899-7658407cfcee)](https://indigo-lab.github.io/plateau-lod2-mvt/)
+[![plateau-lod2-mvt](https://repository-images.githubusercontent.com/438873495/0bb4e945-c215-49a5-b98d-7f51d20062f8)](https://indigo-lab.github.io/plateau-lod2-mvt/)
 
 # タイル仕様
 
