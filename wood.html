@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>plateau-lod2-mvt</title>
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0" />
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@1.15.2/dist/maplibre-gl.css" />
+  <script src="https://unpkg.com/maplibre-gl@1.15.2/dist/maplibre-gl.js"></script>
+</head>
+
+<body>
+  <div id="map" style="position:absolute;top:0;left:0;bottom:0;right:0;"></div>
+  <script>
+    const style = {
+      "version": 8,
+      "glyphs": "https://maps.gsi.go.jp/xyz/noto-jp/{fontstack}/{range}.pbf",
+      "sprite": new URL("./", location.href) + "tiny-texture-pack-wood",
+      "sources": {
+        "pale": {
+          "type": "raster",
+          "tiles": [
+            "https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png"
+          ],
+          "minzoom": 5,
+          "maxzoom": 18,
+          "tileSize": 256,
+          "attribution": "<a href='http://maps.gsi.go.jp/development/ichiran.html'>地理院タイル</a>"
+        },
+        "bldg": {
+          "type": "vector",
+          "tiles": [
+            "https://indigo-lab.github.io/plateau-lod2-mvt/{z}/{x}/{y}.pbf"
+          ],
+          "minzoom": 10,
+          "maxzoom": 16
+        }
+      },
+      "layers": [{
+        "id": "pale",
+        "type": "raster",
+        "source": "pale",
+        "minzoom": 5,
+        "maxzoom": 20
+      }, {
+        "id": "fill-extrusion-bldg",
+        "type": "fill-extrusion",
+        "source": "bldg",
+        "source-layer": "bldg",
+        "minzoom": 10,
+        "maxzoom": 20,
+        "filter": ["has", "z"],
+        "paint": {
+          "fill-extrusion-pattern": [
+            "let", "index", ["%", ["round", ["*", 10, ["get", "z"]]], 4],
+            [
+              "case",
+              ["==", ["var", "index"], 0],
+              ["image", "wood11"],
+              ["==", ["var", "index"], 1],
+              ["image", "wood24"],
+              ["==", ["var", "index"], 2],
+              ["image", "wood34"],
+              ["image", "wood44"]
+            ]
+          ],
+          "fill-extrusion-height": ["*", ["get", "z"], 1]
+        }
+      }]
+    };
+
+    new maplibregl.Map({
+      "container": "map",
+      "center": [139.693909, 35.686302],
+      "hash": true,
+      "zoom": 16,
+      "pitch": 60,
+      "bearing": 22,
+      "style": style
+    });
+  </script>
+</body>
+
+</html>
