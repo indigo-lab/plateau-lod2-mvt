@@ -11,9 +11,19 @@
 
 # デモ
 
+## 積み木調
+
 <https://indigo-lab.github.io/plateau-lod2-mvt/>
 
 [![plateau-lod2-mvt](https://repository-images.githubusercontent.com/438873495/0bb4e945-c215-49a5-b98d-7f51d20062f8)](https://indigo-lab.github.io/plateau-lod2-mvt/)
+
+## 木目調
+
+<https://indigo-lab.github.io/plateau-lod2-mvt/wood.html>
+
+[![wood](https://user-images.githubusercontent.com/8913051/148005895-73bcae05-30f2-4faf-a9e1-221866b95a3f.png)](https://indigo-lab.github.io/plateau-lod2-mvt/wood.html)
+
+※ テクスチャとして [Tiny Texture Pack: 25 Wood Textures (CC0 Public Domain)](https://opengameart.org/content/tiny-texture-pack) を使用しています。
 
 # タイル仕様
 
@@ -83,3 +93,7 @@ $ bzcat geojson.bz2 | tippecanoe --no-tile-compression -ad -an -Z10 -z16 -e dist
 ## 2021-12-24
 
 - 初版公開
+
+## 2022-01-04
+
+- 木目調デモを追加
